@@ -2,13 +2,13 @@ import React from 'react';
 
 const Header = () => {
     return (
-    <div className=''>
-        <div>
-            <img src="https://www.google.com/search?q=quiz+time+image&oq=quiz&aqs=chrome.1.69i59j35i39j46i19i199i465i512j0i19i512j46i19i199i465i512j69i60l2j69i61.5249j0j7&sourceid=chrome&ie=UTF-8" alt="" />
+        <div className='w-auto h-56  border-4 border-gray-50 rounded-lg bg-slate-200  flex justify-center'>
+        <div className='mr-6 mt-3'>
+            <img src="" alt="" />
             <h2>This is header</h2>
        </div>
-       <div>
-        <p></p>
+       <div className='mr-6 w-6/12 mt-3'>
+        <p> Quiz: A form of entertainment often used on radio or television in which the members of a panel compete in answering questions.</p>
        </div>
     </div>
     );
