@@ -4,7 +4,7 @@ const Header = () => {
     return (
         <div className='w-auto h-56  border-4 border-gray-50 rounded-lg bg-slate-200  flex justify-center'>
         <div className='mr-6 mt-3'>
-            <img src="" alt="" />
+        <img src="" alt="" style={{ width: '400px', }}/>
             <h2>This is header</h2>
        </div>
        <div className='mr-6 w-6/12 mt-3'>
