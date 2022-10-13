@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
+import Options from '../Options/Options';
+import Quizquestion from '../Quizquestion';
+
 
 const Questions = () => {
-  const data = useLoaderData();
-  const {id,questions} = data;
-    return (
-        <div>
-            <h2>This is question: {id} </h2>
-            <h4> Question: {questions.options}</h4>
+    const loaderData = useLoaderData();
+    const questions =loaderData.data.questions;
+    
+    
 
-            {/* <div>
-                <div>
-                {questionsData.map(data =>(
-                    <Data key = {data.id} data = {data}></Data>
-                ))}
-                </div>
-            </div> */}
+    return (
+        <div className='m-6 p-6 bg-sky-200'>
+            <h1>Quiz of {loaderData.data.name}</h1>
+            <div className='text-center'>
+                {
+                    questions.map((question,index) =><Quizquestion key ={question.id} questions = {question}></Quizquestion> )
+                }
+            </div>
             
-        </div>
+          
+                
+            
+           
+        </div> 
     );
 };
 

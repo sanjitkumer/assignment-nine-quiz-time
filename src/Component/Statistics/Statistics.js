@@ -1,22 +1,32 @@
 import React from 'react';
+import { useLoaderData } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
-const Statistics = () => {
-    const data = [
-        {"id":1,"name":"React","logo":"https://live.staticflickr.com/65535/52413593240_e00326e727_o.png","total":8},
-        {"id":2,"name":"JavaScript","logo":"https://live.staticflickr.com/65535/52412638962_12e932256a_o.png","total":9},
-        {"id":4,"name":"CSS","logo":"https://live.staticflickr.com/65535/52413665713_5977a693cb_o.png","total":8},
-        {"id":5,"name":"Git","logo":"https://live.staticflickr.com/65535/52412639027_5692c15b3f_o.png","total":11}]
-    return (
-        <div>
-            <LineChart width={500} height={400} data={data} >
-            <Line type="monotone" dataKey="total" stroke="#82ca9d" />
-            <XAxis dataKey="name" />
-            <YAxis />
-            <Tooltip />
-            </LineChart>
-           
-        </div>
+const Statistics = () => {    
+   const loaderData = useLoaderData()
+   const statistics = loaderData.data
+   console.log(statistics)
+
+
+    return (     
+         <div className='bg-gray-600 w-full md:w-9/12 h-96 mx-auto md:mt-44'> 
+         <h2 className='text-4xl my-5 text-center fond-bold text-green-500'>Quiz Chart</h2>
+         <ResponsiveContainer>
+                <LineChart data={statistics} margin={{
+                        top: 5,
+                        right: 30,
+                        left: 20,
+                        bottom: 5,
+                    }} >
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Line type="monotone" dataKey="total" stroke="#8884d8" activeDot={{r: 8}} />
+                </LineChart> 
+            </ResponsiveContainer> 
+         </div>        
+    
     );
 };
 

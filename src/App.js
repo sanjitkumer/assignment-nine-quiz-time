@@ -1,12 +1,11 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Main from './Component/Main/Main';
-import Home from './Component/Home/Home';
 import Topics from './Component/Topics/Topics';
 import Statistics from './Component/Statistics/Statistics';
 import Blog from './Component/Blog/Blog';
-import Questions from './Component/Questions/Questions';
 import Errorpage from './Component/Errorpage/Errorpage';
+import Questions from './Component/Questions/Questions';
 
 function App() {
   const router = createBrowserRouter([
@@ -17,7 +16,8 @@ function App() {
         children: [
           {
             path:'/',
-            element: <Home></Home>
+            loader: () => fetch('https://openapi.programming-hero.com/api/quiz'),
+            element: <Topics></Topics>
           },
           {
             path:'/topics',
@@ -26,19 +26,18 @@ function App() {
            
           },
           {
-            path: '/:id',
-            loader: async({params}) => {
-              return fetch(`https://openapi.programming-hero.com/api/quiz/${params.id}`)
-            },
-            element:<Questions></Questions>
+            path:'/questions/:id',
+            loader:async({params})=> fetch(`https://openapi.programming-hero.com/api/quiz/${params.id}`),
+            element:<Questions/>
           },
           {
             path:'/statistics',
-            element: <Statistics></Statistics>
+            loader: () => fetch('https://openapi.programming-hero.com/api/quiz'),
+            element:<Statistics/>
           },
           {
             path:'/blog',
-            element: <Blog></Blog>
+            element:<Blog/>
           }
         ]
       }
